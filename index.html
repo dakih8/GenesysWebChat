@@ -33,6 +33,36 @@
   });
 </script>
 
+<h2>Customer Co-browse Control</h2>
+  <button id="stopCobrowseBtn">Stop Sharing</button>
+  <div id="status"></div>
+
+  <script>
+    document.getElementById("stopCobrowseBtn").addEventListener("click", function () {
+      const statusEl = document.getElementById("status");
+
+      if (typeof Genesys !== "function") {
+        statusEl.textContent = "Genesys Messenger SDK is not loaded.";
+        console.error("Genesys Messenger SDK is not loaded.");
+        return;
+      }
+
+      Genesys(
+        "command",
+        "CobrowseService.stopSession",
+        {},
+        function () {
+          statusEl.textContent = "Co-browse session stopped successfully.";
+          console.log("Co-browse session stopped");
+        },
+        function (err) {
+          statusEl.textContent = "Failed to stop co-browse session.";
+          console.error("Failed to stop co-browse session", err);
+        }
+      );
+    });
+  </script>
+  
 </body>
 </html>
 
