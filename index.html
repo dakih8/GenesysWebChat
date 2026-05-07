@@ -8,8 +8,10 @@
 <p>Email: d@hotamil.com</p>
 <p>Password: <div class="cobrowse-masked">123456789</div></p>
 <p>Code: <span class="cobrowse-masked">00112200000001</span></p>
-<!-- After: Add type for masking -->
-<input type="password" name="ssn" placeholder="Enter SSN">
+
+  <!-- Masked by type: password, email -->
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" value="customer@example.com">
   
   <div data-cobrowse-masked="true">
   All of this text will be converted to mask characters.
